@@ -8,7 +8,7 @@ Vagrant Chef allows developers to test recipes locally on a VM consistently from
 * Download repository `git clone git@github.com:giacomo81/vagrant-chef.git`
 
 ###Create VirtualBox VM using Vagrant
-*(This repositories vagrant files will only work if combined with the [Packer-Vagrant](https://github.com/giacomo81/packer-vagrant) project)*
+*(This repositories Vagrant files will only work if combined with the [Packer-Vagrant](https://github.com/giacomo81/packer-vagrant) project)*
 
 ####From the platform directory (i.e. `$ cd centos6.5`) execute the vagrant commands
 
