@@ -7,7 +7,7 @@ Vagrant Chef allows developers to test recipes locally on a VM consistently from
 * Download and install [VirtualBox](http://www.virtualbox.org).
 
 ###Create VirtualBox VM using Vagrant
-
+*(This repositories vagrant files will only work if combined with the [Packer-Vagrant](https://github.com/giacomo81/packer-vagrant) base boxes project)*
 From the platform directory execute the vagrant
 
       $ vagrant up
