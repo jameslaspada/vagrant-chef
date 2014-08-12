@@ -3,7 +3,8 @@ Vagrant Chef allows developers to test recipes locally on a VM consistently from
 
 ###Prerequisites
 
-Download and install [Vagrant](http://www.vagrantup.com)
+* Download and install [Vagrant](http://www.vagrantup.com).
+* Download and install [VirtualBox](http://www.virtualbox.org).
 
 ###Create VirtualBox VM using Vagrant
 
