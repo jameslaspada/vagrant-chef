@@ -1,0 +1,19 @@
+{
+  "name": "chef-client",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "Configures the chef-client on node.",
+  "run_list": [
+    "recipe[chef-client]",
+    "recipe[chef-client::config]",
+    "recipe[chef-client::delete_validation]"
+  ], 
+  "override_attributes": {
+    "chef_client" : {
+      "config" : {
+        "chef_server_url" : "https://ec2-54-164-95-180.compute-1.amazonaws.com",
+        "ssl_verify_mode" : "verify_peer"
+      }
+    }
+  }
+}
