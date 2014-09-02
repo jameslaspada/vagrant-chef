@@ -7,10 +7,11 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos6.5"
   config.vm.hostname = "hello-world-chef-demo"
+  config.vm.box_download_insecure = true
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
-  config.vm.network "public_network", bridge: 'en0: Wi-Fi (AirPort)'
+  # config.vm.network "private_network", ip: "192.168.50.50"
   config.vm.provider "virtualbox" do |vb|
     # Don't boot with headless mode
     vb.gui = false
@@ -20,7 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
    config.omnibus.chef_version = :latest
    config.vm.provision "chef_client" do |chef|
-    chef.chef_server_url = "https://chef.jpldev.com/"
+    # chef.chef_server_url = "https://chef.jpldev.com/"
+    chef.chef_server_url = "https://ec2-54-164-95-180.compute-1.amazonaws.com/"
     chef.validation_client_name = "chef-validator"
     chef.validation_key_path = "../../chef/.chef/chef-validator.pem"
     chef.provisioning_path = "/etc/chef"
@@ -28,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.delete_client = true
     chef.environment = "chef-demo"
     chef.node_name = "hello-world-chef-demo"
-    chef.add_role "chef-client"
+    # chef.add_role "chef-client"
     chef.add_recipe "tomcat"
   end
 end
