@@ -7,9 +7,14 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "default_attributes": {
-
+    "web" : {
+      "service" : {
+        "name" : "tomcat",
+        "version" : 6
+      }
+    }
   },
   "override_attributes": {
 
-  }
+  }  
 }
