@@ -1,0 +1,9 @@
+.DS_Store
+Berksfile.lock
+Gemfile.lock
+.vagrant
+cookbooks/
+data_bags/
+*.sw[op]
+VERSION
+/.project
