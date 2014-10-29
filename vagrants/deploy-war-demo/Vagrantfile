@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "centos6.5"
+  config.vm.hostname = "game-host"
+  config.vm.box_download_insecure = true
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+  # config.vm.network "private_network", ip: "192.168.50.50"
+  config.vm.network :forwarded_port, host: 8080, guest: 8080
+  config.vm.provider "virtualbox" do |vb|
+    # Don't boot with headless mode
+    vb.gui = false
+    # Use VBoxManage to customize the VM. For example to change memory:
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+  config.omnibus.chef_version = :latest
+  config.vm.provision "chef_client" do |chef|
+    chef.chef_server_url = "https://ec2-54-164-95-180.compute-1.amazonaws.com/"
+    chef.validation_client_name = "chef-validator"
+    chef.client_key_path = "/etc/chef/client.pem"
+    chef.validation_key_path = "../../chef/.chef/chef-validator.pem"
+    chef.provisioning_path = "/etc/chef"
+    chef.environment = "chef-demo"
+    chef.node_name = "game-host"
+    # chef.add_role "chef-client"
+    chef.add_recipe "tomcat"
+    chef.add_recipe "deploy-game"
+  end
+end

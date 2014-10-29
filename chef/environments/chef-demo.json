@@ -12,6 +12,13 @@
         "name" : "tomcat",
         "version" : 6
       }
+    },
+    "web_app" : {
+      "group_id" : "com.jpldev.match-game",
+      "artifactid" : "match-game",
+      "version" : "1.0.0",
+      "type" : "war",
+      "url" : "http://ec2-54-165-39-123.compute-1.amazonaws.com:8081/nexus/service/local/repositories/releases/content/com/jpldev/videogame/match-game/1.0/match-game-1.0.war"
     }
   },
   "override_attributes": {
