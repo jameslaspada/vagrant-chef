@@ -20,10 +20,10 @@ script "install-game" do
     wget #{node['web_app']['url']}
     mv match-game-1.0.war #{base_webapp_dir}/match-game.war
   EOH
-  notifies :restart, "service[#{web_service}]"
+  # notifies :restart, "service[#{web_service}]", :delayed
 end
 
 service "#{web_service}" do
   supports :status => true, :restart => true, :reload => true
-  action :nothing
+  action :restart
 end

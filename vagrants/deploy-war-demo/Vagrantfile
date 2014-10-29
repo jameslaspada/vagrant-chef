@@ -28,7 +28,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.provisioning_path = "/etc/chef"
     chef.environment = "chef-demo"
     chef.node_name = "game-host"
-    # chef.add_role "chef-client"
     chef.add_recipe "tomcat"
     chef.add_recipe "deploy-game"
   end
